@@ -1,0 +1,9 @@
+@font-face {
+    font-family: sans-serif;
+    src: url();
+}
+
+body {
+    width: 100vh;
+    height: 100vh;
+}
