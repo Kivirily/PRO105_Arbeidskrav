@@ -1,0 +1,124 @@
+/*
+    Font
+*/
+@font-face {
+    font-family: "Fette";
+    src: url(../font/FETTE.TTF);
+}
+
+/*
+    Keyframes til animasjoner
+*/
+@keyframes fade-in {
+    /* Statisk animasjon som endrer objektets opacity fra 0 til 100 gjennom animation-duration */
+    from {opacity: 0;}
+    to {opacity: 100;}
+}
+@keyframes slide-in {
+    /* Objektet vil skli inn fra høyre samtidig som opacity går fra 0 til 100 */
+    from {opacity: 0; transform: translateX(+10%);}
+    to {opacity: 100; transform: translateX(0);}
+}
+
+/*
+    All høyde og bredde er definert i variabel størrelse for å opprettholde positionen sin uansett vindustørrelse
+    Optimalisert for 16:9 størrelsesforhold
+*/
+body {
+    width: 100vh;
+    height: 100vh;
+    background-color: white;
+    margin: 0;
+    border: 0;
+    font-family: "Fette";
+    text-transform: uppercase;
+}
+
+#background-image {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url(../image/bg-image-resized.png) no-repeat center center fixed; /* Bakgrunnen låses slik at den ikke vil bevege seg uansett størrelse på vinduet */
+    background-size: cover;
+    
+    /*  Animation   */
+    animation-name: fade-in;
+    animation-duration: 1s;
+    /* Fill-mode backwards slik at objektet venter i keyframe 1 av animasjonen før selve animasjonen starter etter delay */
+    animation-fill-mode: backwards;
+    animation-delay: 500ms;
+}
+
+#text-wrapper {
+    position: absolute;
+    height: 100vh;
+    width: 45vw;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-link {
+    position: absolute;
+    color: #2f2f2f;
+    left: 0;
+    width: 45vw;
+    text-align: center;
+    font-size: 4vh;
+    text-decoration: none;
+
+    /*  Animation   */
+    animation-name: slide-in;
+    animation-duration: 2s;
+    animation-delay: 1s;
+    animation-fill-mode: backwards;
+
+    transition: color 200ms, font-size 500ms;
+}
+.header-link:hover {
+    color: #ad2332;
+    font-size: 4.5vh;
+}
+
+p {
+    width: 45vw;
+    text-align: center;
+    color: #2f2f2f;
+    position: absolute;
+    align-self: flex-end;
+    bottom: 1vh;
+    font-size: 1.6vh;
+
+    /*  Animation   */
+    animation-name: fade-in;
+    animation-duration: 2s;
+    animation-delay: 1s;
+    animation-fill-mode: backwards;
+}
+
+#logo-wrapper{
+    position: absolute;
+    top: 0;
+    left: 52vw;
+    width: 40vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.logo {
+    position: absolute;
+    top: 55vh;
+    width: 35vw;
+    opacity: 0;
+    transition: opacity 500ms;
+}
+/*  
+    Hover over logo-wrapper vil få logo til å fade inn fra 0 til 100 opacity
+*/
+#logo-wrapper:hover > .logo {
+    opacity: 100;
+}
